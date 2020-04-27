@@ -13,7 +13,7 @@ public class PrincipalCliente {
 		PrintStream saida = new PrintStream(cliente.getOutputStream());
 
 		String enviar = null;
-		while (teclado.hasNextLine() && enviar.equals("SAIR")) {
+		while (cliente.isConnected()) {
 			enviar = teclado.nextLine();
 			saida.println(enviar);
 		}

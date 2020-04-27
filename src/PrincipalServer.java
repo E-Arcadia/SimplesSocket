@@ -13,6 +13,8 @@ public class PrincipalServer {
 			System.out.println("Aguardando nova conwxão.");
 			Socket cliente = server.accept();
 			new Atende(cliente).start();
+//			Atende atende = new Atende(cliente);
+//			atende.run();
 		} while (true);
 
 	}
@@ -35,8 +37,8 @@ class Atende extends Thread {
 			Scanner scanner = new Scanner(cliente.getInputStream());
 			System.out.println("Aguardando mensagem!");
 			String recebido;
-			while ((recebido = scanner.nextLine()) != null) {
-
+			while (cliente.isConnected()) {
+				recebido = scanner.nextLine();
 				System.out.println(recebido);
 			}
 
